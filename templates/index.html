@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>QR Code Generator</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="title">⚡ QR Code Generator ⚡</div>
+
+<div class="card">
+    <form method="POST">
+        <input type="text" name="url" placeholder="Paste your link here..." required>
+        <button type="submit">Generate QR</button>
+    </form>
+</div>
+
+<footer>
+    Developed by <span>Suraj Gupta</span> | MCA Student| @2026 
+</footer>
+
+</body>
+</html>
