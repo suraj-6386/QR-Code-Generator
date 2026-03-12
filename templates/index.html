@@ -5,170 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Generator - Professional QR Creator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<nav class="navbar">
-    <div class="navbar-content">
-        <div class="logo">⚡ QR Code Generator</div>
-        <div class="nav-info">Professional QR Code Creator</div>
-    </div>
-</nav>
-
-<div class="container">
-    <div class="main-content">
-        
-        <!-- Left Panel - Controls -->
-        <div class="left-panel">
-            <h2>Create Your QR Code</h2>
-            
-            <div class="form-group">
-                <label for="text-input">Text or URL</label>
-                <textarea id="text-input" placeholder="Enter URL, text, or contact information..." rows="4"></textarea>
-                <span class="char-count"><span id="char-count">0</span>/2953</span>
-            </div>
-
-            <!-- Color Section -->
-            <div class="section-title">🎨 Customization</div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="qr-color">QR Code Color</label>
-                    <div class="color-input-wrapper">
-                        <input type="color" id="qr-color" value="#000000">
-                        <span class="color-value" id="qr-color-value">#000000</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="bg-color">Background Color</label>
-                    <div class="color-input-wrapper">
-                        <input type="color" id="bg-color" value="#FFFFFF">
-                        <span class="color-value" id="bg-color-value">#FFFFFF</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Advanced Options -->
-            <div class="section-title">⚙️ Advanced Options</div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="error-correction">Error Correction</label>
-                    <select id="error-correction">
-                        <option value="L">Low (7%)</option>
-                        <option value="M" selected>Medium (15%)</option>
-                        <option value="Q">Quartile (25%)</option>
-                        <option value="H">High (30%)</option>
-                    </select>
-                    <small>Higher = More readable if damaged</small>
-                </div>
-                <div class="form-group">
-                    <label for="box-size">Box Size</label>
-                    <div class="slider-wrapper">
-                        <input type="range" id="box-size" min="5" max="20" value="10">
-                        <span class="slider-value" id="box-size-value">10</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="border">Border Size</label>
-                    <div class="slider-wrapper">
-                        <input type="range" id="border" min="0" max="10" value="5">
-                        <span class="slider-value" id="border-value">5</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="button-group">
-                <button class="btn btn-primary" id="generate-btn">
-                    <span class="btn-icon">✨</span> Generate QR Code
-                </button>
-                <button class="btn btn-secondary" id="reset-btn">
-                    <span class="btn-icon">🔄</span> Reset
-                </button>
-            </div>
-
-            <!-- Download Section -->
-            <div id="download-section" class="download-section" style="display: none;">
-                <div class="section-title">📥 Download</div>
-                <div class="format-options">
-                    <button class="format-btn active" data-format="png">
-                        <span class="format-icon">🖼️</span>
-                        <span>PNG</span>
-                    </button>
-                    <button class="format-btn" data-format="svg">
-                        <span class="format-icon">📐</span>
-                        <span>SVG</span>
-                    </button>
-                </div>
-                <button class="btn btn-success" id="download-btn">
-                    <span class="btn-icon">⬇️</span> Download
-                </button>
-            </div>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">QR Gen</a>
+            <button id="theme-toggle" aria-label="Toggle Theme">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
         </div>
+    </nav>
 
-        <!-- Right Panel - Preview -->
-        <div class="right-panel">
-            <div class="preview-card">
-                <div class="preview-label">Preview</div>
-                <div class="preview-container" id="preview-container">
-                    <div class="preview-placeholder">
-                        <span class="placeholder-icon">📱</span>
+    <main class="container">
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="generator-card">
+                    <h2>Create Your QR Code</h2>
+                    
+                    <div class="form-group">
+                        <label for="text-input">Text or URL</label>
+                        <textarea id="text-input" placeholder="Enter URL or text here..." rows="4"></textarea>
+                    </div>
+
+                    <div class="section-title">Customization</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="qr-color">QR Color</label>
+                            <input type="color" id="qr-color" value="#000000">
+                        </div>
+                        <div class="form-group">
+                            <label for="bg-color">BG Color</label>
+                            <input type="color" id="bg-color" value="#FFFFFF">
+                        </div>
+                    </div>
+
+                    <div class="section-title">Advanced Options</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="error-correction">Error Correction</label>
+                            <select id="error-correction">
+                                <option value="L">Low (7%)</option>
+                                <option value="M" selected>Medium (15%)</option>
+                                <option value="Q">Quartile (25%)</option>
+                                <option value="H">High (30%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="box-size">Box Size</label>
+                            <input type="range" id="box-size" min="5" max="20" value="10">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="border">Border Size</label>
+                        <input type="range" id="border" min="0" max="10" value="4">
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary" id="generate-btn">Generate QR Code</button>
+                        <button class="btn-secondary" id="reset-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="preview-card">
+                    <div class="preview-label">Preview</div>
+                    <div id="preview-container">
                         <p>Your QR code will appear here</p>
                     </div>
+                    <div id="download-section" style="display: none; margin-top: 2rem;">
+                        <button class="btn-primary" id="download-btn">Download PNG</button>
+                    </div>
                 </div>
-                <div class="preview-info">
-                    <p id="preview-info-text">Enter text and click Generate</p>
+
+                <div class="features-card">
+                    <h3>Features</h3>
+                    <ul>
+                        <li>✓ High-speed generation</li>
+                        <li>✓ Custom colors & sizes</li>
+                        <li>✓ Error correction levels</li>
+                        <li>✓ Professional aesthetics</li>
+                    </ul>
                 </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="quick-actions">
-                <button class="action-btn" id="copy-btn" style="display: none;">
-                    <span class="action-icon">📋</span>
-                    <span>Copy to Clipboard</span>
-                </button>
-                <button class="action-btn" id="save-btn" style="display: none;">
-                    <span class="action-icon">💾</span>
-                    <span>Save Locally</span>
-                </button>
-            </div>
-
-            <!-- Features List -->
-            <div class="features-box">
-                <h3>✨ Features</h3>
-                <ul>
-                    <li>✓ High-speed generation</li>
-                    <li>✓ Custom colors & sizes</li>
-                    <li>✓ Multiple formats</li>
-                    <li>✓ Error correction levels</li>
-                    <li>✓ Real-time preview</li>
-                </ul>
             </div>
         </div>
+    </main>
 
-    </div>
-</div>
+    <footer>
+        <div class="footer-content">
+            <a href="/policy">Privacy & Terms</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </footer>
 
-<!-- Toast Notification -->
-<div class="toast" id="toast"></div>
-
-<footer>
-    <div class="footer-content">
-        <p>Developed by <span>Suraj Gupta</span> | MCA Student | © 2026</p>
-        <p class="footer-links">
-            <a href="#privacy">Privacy</a> | 
-            <a href="#terms">Terms</a> | 
-            <a href="#contact">Contact</a>
-        </p>
-    </div>
-</footer>
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
 </body>
 </html>

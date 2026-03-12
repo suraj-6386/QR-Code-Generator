@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy & Terms - QR Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">QR Gen</a>
+            <button id="theme-toggle" aria-label="Toggle Theme">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="legal-page">
+        <header>
+            <h1>Privacy Policy & Terms of Service</h1>
+            <p class="subtitle">Effective Date: March 12, 2026</p>
+        </header>
+
+        <section class="content-section">
+            <h2>Privacy Policy</h2>
+            <p>Your privacy is important to us. This QR Code Generator does not store any of the data you input to generate QR codes. All generation is handled on-demand, and we do not track your usage or collect personal information.</p>
+            
+            <h2>Terms of Service</h2>
+            <p>By using this service, you agree to use it for lawful purposes only. We provide this tool "as is" without any warranties of any kind. We are not responsible for any misuse of the generated QR codes.</p>
+            
+            <h2>Contact Us</h2>
+            <p>If you have any questions about these terms, please contact us through our <a href="/contact">contact page</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a href="/policy">Privacy & Terms</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</body>
+</html>

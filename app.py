@@ -10,6 +10,14 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route("/policy")
+def policy():
+    return render_template("policy.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 @app.route("/generate", methods=["POST"])
 def generate():
     try:

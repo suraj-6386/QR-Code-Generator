@@ -1,0 +1,5 @@
+File Location: Purpose
+templates/index.html: Main QR Code Generator interface with Light/Dark mode.
+templates/policy.html: Combined Privacy Policy and Terms of Service.
+templates/contact.html: Professional contact card for Suraj Gupta.
+static/js/theme.js: Logic for switching between Light and Dark modes.
